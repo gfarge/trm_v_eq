@@ -5,3 +5,5 @@
 __pycache__/
 .DS_Store
 synch_in_time
+minor_plots
+special_simulations

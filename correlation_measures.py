@@ -79,7 +79,7 @@ def cross_corr_bias(sig1, sig2):
     return bias
 
 
-def correlation_matrix(trm, parameters):
+def correlation_matrix(trm, parameters, verbose=False):
     """Compute the cross correlation matrix
 
     The cross-correlation matrix computes the cross-correlation coefficient (allowing for a lag) and lag between activity time series of tremor along strike (binned).
@@ -118,7 +118,7 @@ def correlation_matrix(trm, parameters):
     lag_matrix = np.zeros((len(x_bin_edges)-1, len(x_bin_edges)-1))
 
     for ii in range(len(x_bin_edges)-1):
-        print('{:d}/{:d}'.format(ii, len(x_bin_edges)-1), end='\r')
+        if verbose: print('{:d}/{:d}'.format(ii, len(x_bin_edges)-1), end='\r')
         for jj in range(len(x_bin_edges)-1):
             if jj <= ii:  # as the matrix is symetrical, only compute for one pair of indices
                 if ~np.any(counts[ii, :]) or ~np.any(counts[jj, :]):  # if no activity in one of the bins, set to nan
